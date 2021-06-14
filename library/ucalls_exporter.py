@@ -59,8 +59,10 @@ histogram_latency = Histogram('ebpf_ucalls_latency', 'method calls',['method'])
 histogram_calls = Histogram('ebpf_ucalls_calls', 'method calls',['method'])
 
 
-http_port=args.port
-if ! http_port :
+
+if args.port:
+    http_port=args.port
+else:
     http_port=default_port
 
 start_http_server(http_port)
