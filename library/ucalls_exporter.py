@@ -42,7 +42,6 @@ parser.add_argument("-l", "--language", choices=languages + ["none"],
     help="language to trace (if none, trace syscalls only)")
 parser.add_argument("-T", "--top", type=int,
     help="number of most frequent/slow calls to print")
-
 parser.add_argument("-S", "--syscalls", action="store_true",
     help="record syscall latency (adds overhead)")
 parser.add_argument("-v", "--verbose", action="store_true",
@@ -127,7 +126,7 @@ program = """
 #define MAX_STRING_LENGTH 80
 DEFINE_NOLANG
 DEFINE_LATENCY
-DEFINE_SYSCALLS
+#define LATENCY
 struct method_t {
     char clazz[MAX_STRING_LENGTH];
     char method[MAX_STRING_LENGTH];
@@ -253,7 +252,6 @@ TRACEPOINT_PROBE(raw_syscalls, sys_exit) {
    .replace("READ_METHOD", read_method) \
    .replace("PID_FILTER", "if ((pid >> 32) != %d) { return 0; }" % args.pid) \
    .replace("DEFINE_NOLANG", "#define NOLANG" if not language else "") \
-   .replace("DEFINE_LATENCY", "#define LATENCY" if args.latency else "") \
    .replace("DEFINE_SYSCALLS", "#define SYSCALLS" if args.syscalls else "")
 
 if language:
