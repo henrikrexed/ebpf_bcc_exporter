@@ -68,6 +68,7 @@ if args.port:
 else:
     http_port=default_port
 
+start_http_server(http_port)
 # signal handler
 def signal_ignore(signal_value, frame):
     print()
