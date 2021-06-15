@@ -57,14 +57,13 @@
 # 20-Dec-2016   Brendan Gregg   Created this.
 
 from __future__ import print_function
-from prometheus_client import start_http_server, Histogram
 from bcc import BPF, PerfType, PerfSWConfig
 from time import sleep, strftime
 import argparse
 import multiprocessing
 from os import getpid, system, open, close, dup, unlink, O_WRONLY
 from tempfile import NamedTemporaryFile
-
+from prometheus_client import start_http_server, Histogram
 # arguments
 examples = """examples:
     ./cpuunclaimed            # sample and calculate unclaimed idle CPUs,
@@ -328,7 +327,7 @@ while 1:
                     print(",".join(str(lens[c]) for c in range(ncpu)), end="")
 
                     for c in range(ncpu):
-                        histogram_cpuqueue.labels(str(c)).observe(str(lens[c]))
+                        histogram_cpuqueue.labels(str(c)).observe(lens[c])
 
                     if args.fullcsv:
                         print(",", end="")
@@ -409,7 +408,7 @@ while 1:
         print("%%CPU %6.2f%%, unclaimed idle %0.2f%%" % (100 * util,
               100 * unclaimed))
         for c in range(ncpu):
-            histogram_cpuqueue.labels(str(c)).observe(str(lens[c]))
+            histogram_cpuqueue.labels(str(c)).observe(lens[c])
 
     countdown -= 1
     if exiting or countdown == 0:
