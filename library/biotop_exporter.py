@@ -58,8 +58,8 @@ diskstats = "/proc/diskstats"
 
 
 histogram_io = Gauge('ebpf_biotop_io', 'Disk IO',['command','operation','disk'])
-histogram_kbytes = Gauge('ebpf_biotop_kbytes ', 'Kbytes I/O',['command','operation','disk'])
-histogram_avglatency_ms= Gauge('ebpf_biotop_avglatency', 'Latenty ms ',['command','operation','disk'])
+histogram_kbytes = Gauge('ebpf_biotop_kbytes', 'Kbytes I/O',['command','operation','disk'])
+histogram_avglatency_ms = Gauge('ebpf_biotop_avglatency', 'Latenty ms ',['command','operation','disk'])
 
 
 
