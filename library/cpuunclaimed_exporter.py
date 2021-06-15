@@ -57,13 +57,14 @@
 # 20-Dec-2016   Brendan Gregg   Created this.
 
 from __future__ import print_function
+from prometheus_client import start_http_server, Histogram
 from bcc import BPF, PerfType, PerfSWConfig
 from time import sleep, strftime
 import argparse
 import multiprocessing
 from os import getpid, system, open, close, dup, unlink, O_WRONLY
 from tempfile import NamedTemporaryFile
-from prometheus_client import start_http_server, Histogram
+
 # arguments
 examples = """examples:
     ./cpuunclaimed            # sample and calculate unclaimed idle CPUs,
