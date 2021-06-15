@@ -20,9 +20,10 @@ from time import sleep, strftime
 import argparse
 import signal
 from subprocess import call
+from prometheus_client import start_http_server, Gauge
+
 
 default_port=9000
-from prometheus_client import start_http_server, Gauge
 # arguments
 examples = """examples:
     ./biotop            # block device I/O top, 1 second refresh
@@ -69,6 +70,7 @@ else:
     http_port=default_port
 
 start_http_server(http_port)
+
 # signal handler
 def signal_ignore(signal_value, frame):
     print()
