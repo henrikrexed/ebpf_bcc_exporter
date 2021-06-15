@@ -63,7 +63,7 @@ import argparse
 import multiprocessing
 from os import getpid, system, open, close, dup, unlink, O_WRONLY
 from tempfile import NamedTemporaryFile
-from prometheus_client import start_http_server, Histogram
+from prometheus_client import start_http_server, Gauge
 # arguments
 examples = """examples:
     ./cpuunclaimed            # sample and calculate unclaimed idle CPUs,
@@ -105,7 +105,7 @@ if args.port:
 else:
     http_port=default_port
 
-histogram_cpuqueue = Histogram('ebpf_cpu_unclaimend_queuelengh', 'queue length',['cpu'])
+histogram_cpuqueue = Gauge('ebpf_cpu_unclaimend_queuelengh', 'queue length',['cpu'])
 
 
 start_http_server(http_port)
@@ -327,7 +327,7 @@ while 1:
                     print(",".join(str(lens[c]) for c in range(ncpu)), end="")
 
                     for c in range(ncpu):
-                        histogram_cpuqueue.labels(str(c)).observe(lens[c])
+                        histogram_cpuqueue.labels(str(c)).set(lens[c])
 
                     if args.fullcsv:
                         print(",", end="")
