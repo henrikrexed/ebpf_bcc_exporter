@@ -7,5 +7,5 @@ RUN mkdir prometheus_exporter
 COPY ./library prometheus_exporter
 COPY ./script prometheus_exporter
 WORKDIR prometheus_exporter
-RUN chmod +x prometheus_exporter/script/run.sh
-ENTRYPOINT [ "prometheus_exporter/script/run.sh"]
+RUN chmod +x ./script/run.sh
+ENTRYPOINT [ "./script/run.sh"]
