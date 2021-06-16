@@ -6,7 +6,7 @@ if [ $# -eq 0 ]
     exit 0
 fi
 
-if [ -z "$1"]
+if [ -z "$1" ]
   then
     echo "Operation is not specified"
     exit 0
@@ -14,7 +14,7 @@ else
    OPERATION=$1
 fi
 
-if [ -z "$2"]
+if [ -z "$2" ]
   then
     PORT=9000
 else
