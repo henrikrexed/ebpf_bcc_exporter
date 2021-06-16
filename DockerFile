@@ -7,4 +7,5 @@ RUN mkdir prometheus_exporter
 COPY library/ prometheus_exporter/library/
 COPY script/ prometheus_exporter/script/
 WORKDIR prometheus_exporter
+RUN ls library/
 ENTRYPOINT [ "script/run.sh"]
