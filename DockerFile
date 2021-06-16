@@ -7,6 +7,4 @@ RUN mkdir prometheus_exporter
 COPY library/ prometheus_exporter/library/
 COPY script/ prometheus_exporter/script/
 WORKDIR prometheus_exporter
-RUN ls script/
-RUN chmod +x script/run.sh
 ENTRYPOINT [ "script/run.sh"]
