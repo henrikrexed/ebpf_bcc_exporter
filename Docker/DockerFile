@@ -14,4 +14,4 @@ WORKDIR /prometheus_exporter
 COPY ../library /prometheus_exporter
 COPY ../script /prometheus_exporter
 
-ENTRYPOINT [ "/bin/bash","./run.sh"]
+ENTRYPOINT [ "./run.sh"]
