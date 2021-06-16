@@ -1,0 +1,17 @@
+FROM ubuntu:20.04
+RUN apt-get update
+RUN apt-get install
+  git \
+  llvm-dev \
+  llvm-static \
+  iperf \
+  python \
+  python3-pip
+
+RUN apt-get install bpfcc-tools linux-headers-$(uname -r)
+RUN pip install prometheus_client
+WORKDIR /prometheus_exporter
+COPY ../library /prometheus_exporter
+COPY ../script /prometheus_exporter
+
+ENTRYPOINT [ "/bin/bash","./run.sh"]
