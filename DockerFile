@@ -6,5 +6,5 @@ RUN pip install prometheus_client
 WORKDIR /prometheus_exporter
 COPY library /prometheus_exporter
 COPY script /prometheus_exporter
-
+RUN chmod +x /prometheus_exporter/script/*.sh
 ENTRYPOINT [ "script/run.sh"]
