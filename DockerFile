@@ -7,4 +7,4 @@ WORKDIR /prometheus_exporter
 COPY library /prometheus_exporter
 COPY script /prometheus_exporter
 
-ENTRYPOINT [ "./run.sh"]
+ENTRYPOINT [ "./script/run.sh"]

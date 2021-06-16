@@ -1,12 +1,26 @@
 #!/bin/bash
-while getopts p:o: option
-do
- case "${option}"
- in
- p) PORT=${OPTARG};;
- o) OPERATION=${OPTARG};;
- esac
-done
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    exit 0
+fi
+
+if [ -z "$1"]
+  then
+    echo "Operation is not specified"
+    exit 0
+else
+   OPERATION=$1
+fi
+
+if [ -z "$2"]
+  then
+    PORT=9000
+else
+   PORT=$2
+fi
+
 
 
 case $OPERATION in
