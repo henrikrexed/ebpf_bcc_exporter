@@ -6,8 +6,6 @@ RUN pip install prometheus_client
 RUN mkdir prometheus_exporter
 COPY library/ prometheus_exporter/library/
 COPY script/ prometheus_exporter/script/
-RUN ls prometheus_exporter/
-RUN ls prometheus_exporter/script/
 WORKDIR prometheus_exporter
-RUN chmod +x ./script/run.sh
-ENTRYPOINT [ "./script/run.sh"]
+RUN chmod +x script/run.sh
+ENTRYPOINT [ "script/run.sh"]
