@@ -28,6 +28,7 @@ examples = """examples:
     ./filetop 5          # 5 second summaries
     ./filetop 5 10       # 5 second summaries, 10 times only
 """
+default_port=9000
 parser = argparse.ArgumentParser(
     description="File reads and writes by process",
     formatter_class=argparse.RawDescriptionHelpFormatter,
