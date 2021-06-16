@@ -11,7 +11,7 @@ COPY ./ /root/bcc
 RUN ls scripts/
 WORKDIR /root/bcc
 
-RUN ls scripts/
+RUN ls
 
 RUN /usr/lib/pbuilder/pbuilder-satisfydepends && \
     ./scripts/build-deb.sh release
