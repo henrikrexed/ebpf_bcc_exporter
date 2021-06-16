@@ -4,8 +4,8 @@ RUN apt-get install --assume-yes --force-yes python  python3-pip
 RUN apt-get install --assume-yes --force-yes bpfcc-tools linux-headers-$(uname -r)
 RUN pip install prometheus_client
 RUN mkdir prometheus_exporter
-COPY library/ prometheus_exporter/
-COPY script/ prometheus_exporter/
+COPY library/ prometheus_exporter/library/
+COPY script/ prometheus_exporter/script/
 RUN ls prometheus_exporter/
 RUN ls prometheus_exporter/script/
 WORKDIR prometheus_exporter
