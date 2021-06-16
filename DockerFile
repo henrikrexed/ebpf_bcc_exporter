@@ -7,7 +7,7 @@ RUN apt-get -qq update && \
 RUN git clone https://github.com/iovisor/bcc.git
 
 WORKDIR /bcc
-COPY ./ /root/bcc
+RUN cp ./ /root/bcc
 RUN ls scripts/
 WORKDIR /root/bcc
 
